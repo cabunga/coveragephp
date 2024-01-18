@@ -37,6 +37,13 @@ jobs:
       run: vendor/bin/phpunit
     - name: Run tests with phpunit/phpunit
       run: vendor/bin/phpunit --coverage-clover=coverage.xml 
+    - name: Create file ${{ inputs.tag }}
+      run: |
+        cd code
+        echo "sonar.branch.name=main" >> sonar-project.properties
+        echo "sonar.organization=cabunga-github" >> sonar-project.properties
+        echo "sonar.projectKey=cabunga-github_coveragephp" >> sonar-project.properties
+        echo "sonar.sources=." >> sonar-project.properties      
     - name: SonarQube Scan
       uses: SonarSource/sonarqube-scan-action@master
       env:
