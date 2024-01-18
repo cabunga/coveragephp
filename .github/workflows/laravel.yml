@@ -39,7 +39,7 @@ jobs:
       run: vendor/bin/phpunit --coverage-clover=coverage.xml 
     - name: Create file ${{ inputs.tag }}
       run: |
-        cd code
+        ls
         echo "sonar.branch.name=main" >> sonar-project.properties
         echo "sonar.organization=cabunga-github" >> sonar-project.properties
         echo "sonar.projectKey=cabunga-github_coveragephp" >> sonar-project.properties
