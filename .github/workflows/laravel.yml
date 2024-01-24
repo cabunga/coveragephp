@@ -41,10 +41,7 @@ jobs:
     #  run: vendor/bin/phpunit
     - name: Run tests with phpunit/phpunit
       run: vendor/bin/phpunit --coverage-clover=coverage.xml 
-    - name: Run Prometheus Exporter
-      uses: prometheus-community/github-action-exporter@main
-      with:
-        args: --web.listen-address=:9090
+    
     - name: Create file ${{ inputs.tag }}
       run: |
         ls
