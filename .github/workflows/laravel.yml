@@ -12,8 +12,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Setup Prometheus
-      uses: actions/setup-prometheus@v2
+
 
     - uses: shivammathur/setup-php@15c43e89cdef867065b0213be354c2841860869e
       with:
@@ -42,7 +41,10 @@ jobs:
     #  run: vendor/bin/phpunit
     - name: Run tests with phpunit/phpunit
       run: vendor/bin/phpunit --coverage-clover=coverage.xml 
-   
+    - name: Run Prometheus Exporter
+      uses: prometheus-community/github-action-exporter@main
+      with:
+        args: --web.listen-address=:9090
     - name: Create file ${{ inputs.tag }}
       run: |
         ls
