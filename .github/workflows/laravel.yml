@@ -55,3 +55,7 @@ jobs:
       env:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}      
+    - name: Export Metrics
+      uses: actions/prometheus@v0.7.0
+      with:
+        job: 'laravel-tests'
